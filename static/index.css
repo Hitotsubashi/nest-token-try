@@ -1,0 +1,15 @@
+#root {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 20vh auto 0;
+  max-width: 960px;
+}
+
+.login-container {
+  width: 500px;
+  margin: auto;
+}
+
+.login-btn {
+  width: 100%;
+}
