@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseInterceptors } from '@nestjs/common';
+import { TokenInterceptor } from './token.interceptor';
 
 const wikiDict = {
   spacex:
@@ -6,8 +7,8 @@ const wikiDict = {
   tesla:
     '特斯拉（英语：Tesla, Inc.），旧称特斯拉汽车（英语：Tesla Motors），是美国最大的电动汽车及太阳能板公司，并与Panasonic合作电池业务，产销电动汽车、车载电脑（FSD系统），太阳能板及储能设备与系统解决方案。特斯拉是世界上最早的自动驾驶汽车生产商，至2018年，特斯拉汽车已经成为世界最畅销充电式汽车公司。',
 };
-
-@Controller('/api/wiki')
+@UseInterceptors(TokenInterceptor)
+@Controller('api/wiki')
 export class WikiController {
   @Get(':keyword')
   getDetail(@Param('keyword') keyword: string) {

@@ -5,7 +5,7 @@ function Login() {
   const handleSubmit = useCallback(async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
-    const response = await fetch('/api/login', {
+    await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -15,8 +15,6 @@ function Login() {
         password: form.password.value,
       }),
     });
-    const body = await response.json();
-    Cookies.set('token', body.token);
     toHomePage();
   }, []);
 

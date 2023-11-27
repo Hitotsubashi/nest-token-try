@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Logger, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { LoginController } from './login.controller';
-import { AppService } from './app.service';
 import { WikiController } from './wiki.controller';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import LoggerMiddleware from './log.middleware';
+import { TokenService } from './token.service';
 
 @Module({
   imports: [
@@ -12,6 +13,10 @@ import { join } from 'path';
     }),
   ],
   controllers: [LoginController, WikiController],
-  providers: [AppService],
+  providers: [Logger, TokenService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
