@@ -37,7 +37,7 @@ function Login() {
             id="username"
             type="text"
             placeholder="请输入账户名"
-            defaultValue="admin"
+            defaultValue="admin123"
           />
         </Form.Group>
         <Form.Group as={Row} className="mb-3" controlId="password">
@@ -46,7 +46,7 @@ function Login() {
             id="password"
             type="password"
             placeholder="请输入密码"
-            defaultValue="admin"
+            defaultValue="admin886622444"
           />
           <Form.Text id="password" muted>
             账户名和密码随意
