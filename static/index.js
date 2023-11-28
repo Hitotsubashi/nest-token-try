@@ -7,9 +7,7 @@ function statisticNow() {
   if (!tokenExpiredTime || Number(Cookies.get('tokenExpiredTime')) < curTime) {
     return 0;
   } else {
-    return (
-      ((Number(Cookies.get('tokenExpiredTime')) - curTime) / 1000 / 6) * 100
-    );
+    return (Number(Cookies.get('tokenExpiredTime')) - curTime) / 60;
   }
 }
 
@@ -26,7 +24,7 @@ function MyApp() {
     }
     const timer = setInterval(() => {
       setTokenExpiredNow(statisticNow());
-    }, 200);
+    }, 50);
     return () => {
       clearInterval(timer);
     };
